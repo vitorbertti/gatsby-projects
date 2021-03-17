@@ -1,0 +1,26 @@
+[
+   {
+      "img": "../assets/images/toronto.jpg",
+      "alt": "Toronto",
+      "name": "Toronto",
+      "button": "View Destination"
+   },
+   {
+      "img": "../assets/images/seoul.jpg",
+      "alt": "Seoul",
+      "name": "Seoul",
+      "button": "View Destination"
+   },
+   {
+      "img": "../assets/images/melbourne.jpg",
+      "alt": "Melbourne",
+      "name": "Melbourne",
+      "button": "View Destination"
+   },
+   {
+      "img": "../assets/images/tokyo.jpg",
+      "alt": "Tokyo",
+      "name": "Tokyo",
+      "button": "View Destination"
+   }
+]
