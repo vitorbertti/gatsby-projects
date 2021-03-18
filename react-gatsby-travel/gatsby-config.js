@@ -11,7 +11,14 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/src/assets/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `videos`,
+        path: `${__dirname}/src/assets/videos`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -32,5 +39,12 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/data/`,
+      },
+    },
   ],
 }
