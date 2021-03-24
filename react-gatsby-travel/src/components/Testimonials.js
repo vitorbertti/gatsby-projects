@@ -3,8 +3,26 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 import IoMdChechmarkCircleOutline from 'reac-icons/io';
 import {FaRegLightbulb} from 'react-icons/fa';
+import { graphql, useStaticQuery } from 'gatsby';
 
 const Testimonials = () => {
+   const data = useStaticQuery(graphql`
+      query {
+         allFile(filter: {ext: regex: "/(jpg)|(png)|(jpeg)"},
+         name: {in: ["testimonial-1", "testimonial-2]}}) {
+            edges {
+               node {
+                  childImageSharp {
+                     fluid {
+                        ...GatsbyImageSharpFluid
+                     }
+                  }
+               }
+            }
+         }
+      }
+   `);
+
    return (
       <TestimonialsContainer>
          <TopLine>
@@ -16,18 +34,21 @@ const Testimonials = () => {
          <ContentWrapper>
             <ColumnOne>
                <Testimonial>
-                  <IoMdChechmarkCircleOutline />
+                  <IoMdChechmarkCircleOutline css={`color: #3fffa8; font-size: 2rem; margin-bottom: 1rem;`} />
                   <h3>Sean Michaels</h3>
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, architecto deleniti. Nisi commodi quis labore.</p>
                </Testimonial>
                <Testimonial>
-                  <FaRegLightbulb />
+                  <FaRegLightbulb css={`color: #f9b19b; font-size: 2rem; margin-bottom: 1rem;`} />
                   <h3>Sarah Kin</h3>
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, architecto deleniti. Nisi commodi quis labore.</p>
                </Testimonial>
             </ColumnOne>
             <ColumnTwo>
-               <Images />
+            {data.allFile.edges.map((image, key) => (
+               <Images key={key} fluid={image.none.childImageSharp.fluid} />
+            ))}
+               
             </ColumnTwo>
          </ContentWrapper>
       </TestimonialsContainer>
@@ -71,7 +92,7 @@ const ContentWrapper = styled.div`
 
 const ColumnOne = styled.div`
    display: grid;
-   grid-template-columns: 1fr 1fr;
+   grid-template-rows: 1fr 1fr;
 `;
 
 const Testimonial = styled.div`
