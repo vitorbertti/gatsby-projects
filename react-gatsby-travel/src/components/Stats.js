@@ -1,22 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
-import { GiEarthAmerica } from 'react-icons/gi';
-import { MdAirplanemodeActive, MdTimer } from 'react-icons/md';
-import { FaMoneyCheck } from 'react-icons/fa';
-
-const StatsData = [
-   {
-      icon: (<GiEarthAmerica />),
-      title: 'Over 100 Destinations',
-      desc: 'Travel to over 100 unique places'
-   }
-]
+import { StatsData } from '../data/StatsData';
 
 const Stats = () => {
    return (
       <StatsContainer>
          <Heading>Why Choose Us?</Heading>
-         <Wrapper></Wrapper>
+         <Wrapper>
+            {StatsData.map((item, index) => (
+               <StatsBox key={index}>
+                  <Icon>{item.icon}</Icon>
+                  <Title>{item.title}</Title>
+                  <Description>{item.desc}</Description>
+               </StatsBox>
+            ))}
+         </Wrapper>
       </StatsContainer>
    )
 }
@@ -53,3 +51,21 @@ const Wrapper = styled.div`
       grid-template-columns: 1fr;
    }
 `;
+
+const StatsBox = styled.div`
+   height: 100%;
+   width: 100%;
+   padding: 2rem;
+`;
+
+const Icon = styled.div`
+   font-size: 3rem;
+   margin-bottom: 1rem;
+`;
+
+const Title = styled.p`
+   font-size: clamp(1rem, 2.5vw, 1.5rem);
+   margin-bottom: 0.5rem;
+`;
+
+const Description = styled.div``;
