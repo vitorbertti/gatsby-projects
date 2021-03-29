@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./Header"
 import { GlobalStyle } from './styles/GlobalStyles'
+import Footer from './Footer'
 
 const Layout = ({ children }) => {
   
@@ -12,6 +13,7 @@ const Layout = ({ children }) => {
       <GlobalStyle>
         <Header />
         <main>{children}</main>
+        <Footer />
       </GlobalStyle>
     </>
   )
